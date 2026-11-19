@@ -91,7 +91,7 @@ def search(b,c,cr,ep,d,a=-99999,z=99999):
  if not ms:return (-99999 if check(b,c) else 0,None)
  if d==0:return ((ev(b) if c=='w' else -ev(b)),None)
  best=-999999;bm=None
- for m in sorted(ms,key=lambda x:V.get(b[x[1]],0),reverse=True):
+ for m in sorted(ms,key=lambda x:(V.get(b[x[1]],0),b[x[0]].upper()!='R',-abs((x[1]&7)-3.5)-abs((x[1]>>3)-3.5)),reverse=True):
   x,_,_,_=apply(b,c,cr,ep,m);v=-search(x,'b' if c=='w' else 'w',cr,-1,d-1,-z,-a)[0]
   if v>best:best,bm=v,m
   a=max(a,v)
