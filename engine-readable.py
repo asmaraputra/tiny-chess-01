@@ -53,8 +53,8 @@ def moves(b,c,cr,ep):
     for xx in (x-1,x+1):
      if 0<=xx<8 and (b[sq(xx,y+dy)]!='.' and b[sq(xx,y+dy)].isupper()!=W or sq(xx,y+dy)==ep):z += [(xx,y+dy)]
   else:
-   z=[]
-   for dx,dy in (N if u=='N' else D):
+   z=[];ds=D if u in 'RQ' else [(1,1),(1,-1),(-1,1),(-1,-1)]
+   for dx,dy in ds:
     xx,yy=x+dx,y+dy
     while 0<=xx<8 and 0<=yy<8:
      z.append((xx,yy))
