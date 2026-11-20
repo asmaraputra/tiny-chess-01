@@ -81,11 +81,12 @@ def um(i,j,p):return 'abcdefgh'[i&7]+str(i//8+1)+'abcdefgh'[j&7]+str(j//8+1)+(p.
 def apply(b,c,cr,ep,m):
  i,j,nb,p=m; nc='b' if c=='w' else 'w';nr=cr
  if b[i].upper()=='K':nr=nr.replace('K' if c=='w' else 'k','').replace('Q' if c=='w' else 'q','')
- if i in (0,7,56,63):nr=nr.replace(('Q','K','q','k')[(i in (7,0,56,63)) and 0 or 0],'') if False else nr
+ for s,r in ((0,'Q'),(7,'K'),(56,'q'),(63,'k')):
+  if i==s or j==s:nr=nr.replace(r,'')
  ne=-1
  if b[i].upper()=='P' and abs(j-i)==16:ne=(i+j)//2
  return nb,nc,nr,ne
-def ev(b):return sum(V.get(x,0) for x in b)
+def ev(b):return sum(V.get(x,0)+(4-abs((i&7)-3.5)-abs((i>>3)-3.5))*({'P':2,'N':6,'B':4,'R':1,'Q':0}.get(x.upper(),0))*(1 if x.isupper() else -1) for i,x in enumerate(b) if x!='.')
 def search(b,c,cr,ep,d,a=-99999,z=99999):
  ms=moves(b,c,cr,ep)
  if not ms:return (-99999 if check(b,c) else 0,None)
