@@ -69,7 +69,7 @@ def moves(b,c,cr,ep):
    nb=b[:];nb[j]=p;nb[i]='.'
    if u=='P' and j==ep and q=='.':nb[j+( -8 if W else 8)]='.'
    if u=='K' and abs(xx-x)==2:
-    r=7 if xx>x else 0;nb[sq(5 if xx>x else 3,r)]=nb[sq(7 if xx>x else 0,r)];nb[sq(7 if xx>x else 0,r)]='.'
+    r=0 if W else 7;nb[sq(5 if xx>x else 3,r)]=nb[sq(7 if xx>x else 0,r)];nb[sq(7 if xx>x else 0,r)]='.'
    if u=='P' and yy in (0,7):
     for pp in 'QRBN':
      t=pp if W else pp.lower();n2=nb[:];n2[j]=t
