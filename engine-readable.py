@@ -5,9 +5,9 @@ D=[(1,0),(-1,0),(0,1),(0,-1),(1,1),(1,-1),(-1,1),(-1,-1)]
 N=[(1,2),(2,1),(-1,2),(-2,1),(1,-2),(2,-1),(-1,-2),(-2,-1)]
 def pos(f):
  b=[]
- for r in f.split()[0].split('/'):
+ for r in f.split()[0].split('/')[::-1]:
   for c in r:b += ['.']*int(c) if c.isdigit() else [c]
- return b[::-1],f.split()[1],f.split()[2],f.split()[3]
+ return b,f.split()[1],f.split()[2],f.split()[3]
 def xy(i):return i&7,i>>3
 def sq(x,y):return y*8+x
 def attacked(b,i,by):
