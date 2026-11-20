@@ -73,9 +73,9 @@ def moves(b,c,cr,ep):
    if u=='P' and yy in (0,7):
     for pp in 'QRBN':
      t=pp if W else pp.lower();n2=nb[:];n2[j]=t
-     if not check(n2,'b' if W else 'w'):out.append((i,j,n2,t))
+     if not check(n2,c):out.append((i,j,n2,t))
     continue
-   if not check(nb,'b' if W else 'w'):out.append((i,j,nb,''))
+   if not check(nb,c):out.append((i,j,nb,''))
  return out
 def um(i,j,p):return 'abcdefgh'[i&7]+str(i//8+1)+'abcdefgh'[j&7]+str(j//8+1)+(p.lower() if p else '')
 def apply(b,c,cr,ep,m):
